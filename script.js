@@ -1,1 +1,4 @@
-// api key: b86c75a0
+document.getElementById("movie-title-search").addEventListener("submit", event=>{
+    event.preventDefault()
+    console.log("submit")
+})

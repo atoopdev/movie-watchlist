@@ -1,87 +1,100 @@
 /* takes content size, padding, and border into account when determing size of content */
 * {
-  box-sizing: border-box;
-}
-
-html {
-  font-size: 0.75rem;
-  font-family: "Roboto", sans-serif;
-}
-
-/* remove margins on typography to keep margins consistent */
-h1,
-h2,
-h3,
-p {
-  margin: 0;
-}
-h3 {
-  color: ;
-}
-
-h1 {
-  font-weight: 800;
-  color: #fff;
-}
-
-body {
-  margin: 0;
-  font-weight: 300;
-  background-color: #fff;
-  color: black;
-  font-family: "Inter", sans-serif;
-  font-size: 0.875rem;
-  /* background-image: url(./table.png);
+    box-sizing: border-box;
+  }
+  
+  html {
+    font-size: 0.75rem;
+    font-family: "Roboto", sans-serif;
+  }
+  
+  /* remove margins on typography to keep margins consistent */
+  h1,
+  h2,
+  h3,
+  p {
+    margin: 0;
+  }
+  h3 {
+    color: ;
+  }
+  
+  h1 {
+    font-weight: 800;
+    color: #fff;
+  }
+  
+  body {
+    margin: 0;
+    font-weight: 300;
+    background-color: #fff;
+    color: black;
+    font-family: "Inter", sans-serif;
+    font-size: 0.875rem;
+    /* background-image: url(./table.png);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+    */
+  }
+  
+  img {
+    width: 300px;
+  }
+  
+  .container {
+    margin: 50px auto;
+    min-width: 340px;
+    width: 33%;
+    max-width: 550px;
+    height: 779px;
+    border: 1px solid black;
+  }
+  
+  .header {
+    height: 208px;
+    /* border: 1px solid red; */
+    background-color: #696969;
+    background-image: url(./andre-tan-THJJRUhNlEc-unsplash.jpg);
+    background-blend-mode: multiply;
     background-size: cover;
-    background-position: center;
+    background-position: 75% 25%;
     background-repeat: no-repeat;
-    height: 100vh;
-  */
-}
-
-img {
-  width: 300px;
-}
-
-.container {
-  margin: 50px auto;
-  min-width: 340px;
-  width: 33%;
-  max-width: 550px;
-  height: 779px;
-  border: 1px solid black;
-}
-
-.header {
-  height: 208px;
-  /* border: 1px solid red; */
-  background-color: #696969;
-  background-image: url(./andre-tan-THJJRUhNlEc-unsplash.jpg);
-  background-blend-mode: multiply;
-  background-size: cover;
-  background-position: 75% 25%;
-  background-repeat: no-repeat;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-}
-
-.search-bar {
-  display: flex;
-  justify-content: center;
-}
-
-form {
-  border-radius: 6px;
-}
-
-input {
-  padding: 3px;
-}
-
-.mywatchlist-link {
-  font-weight: 700;
-  color: #fff;
-}
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .search-bar {
+    display: flex;
+    justify-content: center;
+  }
+  
+  form {
+    border-radius: 6px;
+  }
+  
+  input {
+    padding: 3px;
+  }
+  
+  .mywatchlist-link {
+    font-weight: 700;
+    color: #fff;
+  }
+  © 2022 GitHub, Inc.
+  Terms
+  Privacy
+  Security
+  Status
+  Docs
+  Contact GitHub
+  Pricing
+  API
+  Training
+  Blog
+  About
+  
