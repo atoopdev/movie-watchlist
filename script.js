@@ -60,8 +60,8 @@ function outputMovies(){
         <div class="movie">
         <img src="${moviesData[i].Poster}" alt = "Poster of ${moviesData[i].Title}"/>
         <div class="movie-summary">
-        <h2 class="movie-title">Title: ${moviesData[i].Title}</h2>
-        <p class="movie-details">${moviesData[i].Runtime} ${moviesData[i].Genre} <button class="btn addtowatchlist" id="addToWatchlist">+ Watchlist </button></p>
+        <p class="movie-title">${moviesData[i].Title} <span class="movie-rating">⭐️ ${moviesData[i].Ratings[0].Value}</span></p>
+        <p class="movie-details">${moviesData[i].Runtime} ${moviesData[i].Genre} <button class="btn addtowatchlist" id="addToWatchlist">+ Watchlist</button></p>
         <p class="movie-plot">${moviesData[i].Plot}</p>
         </div>
         </div>`
