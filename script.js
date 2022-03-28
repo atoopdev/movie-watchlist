@@ -1,13 +1,15 @@
 // api key  b86c75a0
 
+movies = []
+
 // ---------------------------- grab form data -------------------------------
 
 document.getElementById("movie-title-search").addEventListener("submit", event=>{
     event.preventDefault()
-    console.log("submit")
+    // console.log("submit")
     const ourFormData = new FormData(event.target)
     const movieTitle = ourFormData.get("movieTitle")
-    console.log("movieTitle: ", movieTitle)
+    // console.log("movieTitle: ", movieTitle)
     getMovies(movieTitle)
 })
 
@@ -24,6 +26,13 @@ function getMovies(searchTerm){
     fetch(`http://www.omdbapi.com/?s=${searchTerm}&apikey=b86c75a0`, {method: "GET"})
     .then(response => response.json())
     .then(data=>{
-        console.log("Movie data: ", data)
+        // console.log("Movie data: ", data)
+        // console.log("title 0: ", data.Search[0])
+        for(let i=0;i<data.Search.length;i++){
+            movies.push(data.Search[i])
+        }
+        // console.log("Movies array: ", movies)
     })
+    
 }
+
