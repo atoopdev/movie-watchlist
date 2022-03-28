@@ -68,6 +68,14 @@ img {
   padding: 20px;
 }
 
+a {
+  text-decoration: none;
+}
+
+.mywatchlist-link:hover {
+  color: red;
+}
+
 form {
   display: flex;
   justify-content: center;
@@ -117,4 +125,8 @@ input {
 
 .addToWatchlist {
   display: inline-block;
+}
+
+.btn {
+  cursor: pointer;
 }
