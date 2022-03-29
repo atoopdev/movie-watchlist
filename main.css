@@ -27,7 +27,7 @@ h1 {
 body {
   margin: 0;
   font-weight: 300;
-  background-color: #fff;
+  background-color: black;
   color: black;
   font-family: "Inter", sans-serif;
   font-size: 0.875rem;
@@ -48,7 +48,8 @@ img {
   min-width: 340px;
   width: 33%;
   max-width: 550px;
-  height: 779px;
+  min-height: 779px;
+  background-color: #fff;
   /* border: 1px solid black; */
 }
 
@@ -92,7 +93,13 @@ input {
 }
 
 .search-results {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 2em 1em;
+  /* text-align: center; */
+  min-height: 571px;
 }
 
 .movie {
