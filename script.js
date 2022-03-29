@@ -77,7 +77,10 @@ addToWatchlistBTN.addEventListener('click', addToMyWatchlist)
 
 function addToMyWatchlist(e){
     console.log("add to watchlist clicked")
-    if(e.target.classList.contains('addtowatchlist')){
-        let 
-    }
+    
+        let idnum = e.target.parentElement
+        // get IMDBIDnum from movie where "+watchlist" clicked
+        console.log("idnum: ", idnum.children[2].textContent)
+        
+    
 }
