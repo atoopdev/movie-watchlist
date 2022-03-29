@@ -1,6 +1,8 @@
 // api key  b86c75a0
 
+// list of searched for movies
 let moviesData = []
+let watchlist = []
 
 // ---------------------------- grab form data -------------------------------
 
@@ -23,31 +25,27 @@ document.getElementById("movie-title-search").addEventListener("submit", event=>
 
 // -------------------------- look up movie title ------------------------------
 
-function getMoviesList(searchTerm){
+async function getMoviesList(searchTerm){
     
-    fetch(`http://www.omdbapi.com/?s=${searchTerm}&apikey=b86c75a0&plot=full`, {method: "GET"})
-    .then(response => response.json())
-    .then(data=>{
-        
-        for(let i=0;i<data.Search.length;i++){
-            // send imdb id for query to get more detailed data
-           getMovieInfo(data.Search[i].imdbID)
-        }
-    })
+    let response = await fetch(`http://www.omdbapi.com/?s=${searchTerm}&apikey=b86c75a0&plot=full`, {method: "GET"})
+    let data = await response.json()
+
+    for(let i=0;i<data.Search.length;i++){
+    // send imdb id for query to get more detailed data
+    getMovieInfo(data.Search[i].imdbID)
    
+        }
+ 
 }
 
-function getMovieInfo(movie){
-    let movieExtData = []
+async function getMovieInfo(movie){
     // send movie id in query to receive more detailed movie info back
-    fetch(`http://www.omdbapi.com/?i=${movie}&apikey=b86c75a0`, {method: "GET"})
-    .then(response => response.json())
-    .then(data =>{
+    let response = await fetch(`http://www.omdbapi.com/?i=${movie}&apikey=b86c75a0`, {method: "GET"})
+    let data = await response.json()
+    
         console.log("Movie data from getMovieInfo: ", data)
         // becomes movie output list
         moviesData.push(data)
-    
-})
 }
 
 function outputMovies(){
@@ -81,6 +79,24 @@ function addToMyWatchlist(e){
         let idnum = e.target.parentElement
         // get IMDBIDnum from movie where "+watchlist" clicked
         console.log("idnum: ", idnum.children[2].textContent)
+
+       if(isIMDBNum(moviesData[0], idnum.children[2].textContent))
+       {
+           console.log("Match found")
+       }
+       else{
+           console.log("Not match")
+       }
+        // console.log("Found: ", found)
+        // watchlist.push(found)
+        // console.log("Current watchlist: ", watchlist)
         
     
+}
+
+// determine if movie found
+function isIMDBNum(arrvalue, num){
+    console.log("arrvalue.imdbID: ", arrvalue.imdbID)
+    console.log("num: ", num)
+    return arrvalue.imdbID === num
 }
