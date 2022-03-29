@@ -122,6 +122,10 @@ input {
   font-size: 0.75rem;
 }
 
+.movieID {
+  display: none;
+}
+
 .movie-details {
   font-weight: 400;
   padding-bottom: 1em;

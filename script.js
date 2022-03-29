@@ -61,7 +61,9 @@ function outputMovies(){
         <img src="${moviesData[i].Poster}" alt = "Poster of ${moviesData[i].Title}"/>
         <div class="movie-summary">
         <p class="movie-title">${moviesData[i].Title} <span class="movie-rating">⭐️ ${moviesData[i].Ratings[0].Value}</span></p>
-        <p class="movie-details">${moviesData[i].Runtime} ${moviesData[i].Genre} <button class="btn addtowatchlist" id="addToWatchlist">+ Watchlist</button></p>
+        <p class="movie-details">${moviesData[i].Runtime} ${moviesData[i].Genre} 
+        <p class="movieID">${moviesData[i].imdbID}</p>
+        <button class="btn addtowatchlist">+ Watchlist</button></p>
         <p class="movie-plot">${moviesData[i].Plot}</p>
         </div>
         </div>`
@@ -70,3 +72,12 @@ function outputMovies(){
     document.getElementById("search-results").innerHTML=moviesHTML
 }
 
+let addToWatchlistBTN = document.getElementById("search-results")
+addToWatchlistBTN.addEventListener('click', addToMyWatchlist)
+
+function addToMyWatchlist(e){
+    console.log("add to watchlist clicked")
+    if(e.target.classList.contains('addtowatchlist')){
+        let 
+    }
+}
