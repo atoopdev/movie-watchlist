@@ -56,7 +56,7 @@ img {
 .header {
   height: 208px;
   /* border: 1px solid red; */
-  background-color: #696969;
+  background-color: #595959;
   background-image: url(./andre-tan-THJJRUhNlEc-unsplash.jpg);
   background-blend-mode: multiply;
   background-size: cover;
@@ -73,7 +73,8 @@ a {
   text-decoration: none;
 }
 
-.mywatchlist-link:hover {
+.mywatchlist-link:hover,
+.searchformovies-link:hover {
   color: red;
 }
 
@@ -87,12 +88,14 @@ input {
   padding: 3px;
 }
 
-.mywatchlist-link {
+.mywatchlist-link,
+.searchformovies-link {
   font-weight: 700;
   color: #fff;
 }
 
-.search-results {
+.search-results,
+.my-watchlist-results {
   display: flex;
   flex-direction: column;
   justify-content: center;
