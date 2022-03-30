@@ -79,24 +79,14 @@ function addToMyWatchlist(e){
         let idnum = e.target.parentElement
         // get IMDBIDnum from movie where "+watchlist" clicked
         console.log("idnum: ", idnum.children[2].textContent)
-
-       if(isIMDBNum(moviesData[0], idnum.children[2].textContent))
-       {
-           console.log("Match found")
-       }
-       else{
-           console.log("Not match")
-       }
-        // console.log("Found: ", found)
-        // watchlist.push(found)
-        // console.log("Current watchlist: ", watchlist)
+        // find movie in array that matches provided id
+       let result = moviesData.filter(movie=>movie.imdbID === idnum.children[2].textContent)
+       console.log("result: ", result)
+    //    add to watchlist array
+       watchlist.push(result)
+    console.log("Watchlist: ", watchlist)
+        
         
     
 }
 
-// determine if movie found
-function isIMDBNum(arrvalue, num){
-    console.log("arrvalue.imdbID: ", arrvalue.imdbID)
-    console.log("num: ", num)
-    return arrvalue.imdbID === num
-}
