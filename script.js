@@ -2,7 +2,7 @@
 
 // list of searched for movies
 let moviesData = []
-let watchlist = []
+let myWatchlist = []
 
 // ---------------------------- grab form data -------------------------------
 
@@ -53,20 +53,6 @@ function outputMovies(){
     console.log("In outputMovies")
     console.log("moviesData.length: ", moviesData.length)
     moviesHTML = outputMovieHTML(moviesData)
-    // for(let i=0;i<moviesData.length;i++){
-
-    //     moviesHTML += `
-    //     <div class="movie">
-    //     <img src="${moviesData[i].Poster}" alt = "Poster of ${moviesData[i].Title}"/>
-    //     <div class="movie-summary">
-    //     <p class="movie-title">${moviesData[i].Title} <span class="movie-rating">⭐️ ${moviesData[i].Ratings[0].Value}</span></p>
-    //     <p class="movie-details">${moviesData[i].Runtime} ${moviesData[i].Genre} 
-    //     <p class="movieID">${moviesData[i].imdbID}</p>
-    //     <button class="btn addtowatchlist">+ Watchlist</button></p>
-    //     <p class="movie-plot">${moviesData[i].Plot}</p>
-    //     </div>
-    //     </div>`
-    // }
     console.log("moviesHTML: ", moviesHTML)
     document.getElementById("search-results").innerHTML=moviesHTML
 }
@@ -99,12 +85,22 @@ function addToMyWatchlist(e){
         let idnum = e.target.parentElement
         // get IMDBIDnum from movie where "+watchlist" clicked
         console.log("idnum: ", idnum.children[2].textContent)
+        imdbID = idnum.children[2].textContent
+
+
+        // may not be necessary
         // find movie in array that matches provided id
-       let result = moviesData.filter(movie=>movie.imdbID === idnum.children[2].textContent)
-       console.log("result: ", result)
+    //    let result = moviesData.filter(movie=>movie.imdbID === idnum.children[2].textContent)
+    //    console.log("result: ", result)
+
     //    add to watchlist array
-       watchlist.push(result)
-    console.log("Watchlist: ", watchlist)  
+       myWatchlist.push(imdbID)
+    console.log("Watchlist: ", myWatchlist)  
+
+    // pass myWatchlist array as string to localstorage
+    localStorage.setItem("myWatchlist", JSON.stringify(myWatchlist))
+
+    console.log("Output from local storage:", localStorage.getItem("myWatchlist"))
         
     
 }
