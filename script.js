@@ -52,22 +52,42 @@ function outputMovies(){
     let moviesHTML = ""
     console.log("In outputMovies")
     console.log("moviesData.length: ", moviesData.length)
-    for(let i=0;i<moviesData.length;i++){
+    moviesHTML = outputMovieHTML(moviesData)
+    // for(let i=0;i<moviesData.length;i++){
 
-        moviesHTML += `
+    //     moviesHTML += `
+    //     <div class="movie">
+    //     <img src="${moviesData[i].Poster}" alt = "Poster of ${moviesData[i].Title}"/>
+    //     <div class="movie-summary">
+    //     <p class="movie-title">${moviesData[i].Title} <span class="movie-rating">⭐️ ${moviesData[i].Ratings[0].Value}</span></p>
+    //     <p class="movie-details">${moviesData[i].Runtime} ${moviesData[i].Genre} 
+    //     <p class="movieID">${moviesData[i].imdbID}</p>
+    //     <button class="btn addtowatchlist">+ Watchlist</button></p>
+    //     <p class="movie-plot">${moviesData[i].Plot}</p>
+    //     </div>
+    //     </div>`
+    // }
+    console.log("moviesHTML: ", moviesHTML)
+    document.getElementById("search-results").innerHTML=moviesHTML
+}
+
+function outputMovieHTML(arr){
+    let displayHTML = ""
+    for(let i=0;i<arr.length;i++){
+
+        displayHTML += `
         <div class="movie">
-        <img src="${moviesData[i].Poster}" alt = "Poster of ${moviesData[i].Title}"/>
+        <img src="${arr[i].Poster}" alt = "Poster of ${arr[i].Title}"/>
         <div class="movie-summary">
-        <p class="movie-title">${moviesData[i].Title} <span class="movie-rating">⭐️ ${moviesData[i].Ratings[0].Value}</span></p>
-        <p class="movie-details">${moviesData[i].Runtime} ${moviesData[i].Genre} 
-        <p class="movieID">${moviesData[i].imdbID}</p>
+        <p class="movie-title">${arr[i].Title} <span class="movie-rating">⭐️ ${arr[i].Ratings[0].Value}</span></p>
+        <p class="movie-details">${arr[i].Runtime} ${arr[i].Genre} 
+        <p class="movieID">${arr[i].imdbID}</p>
         <button class="btn addtowatchlist">+ Watchlist</button></p>
-        <p class="movie-plot">${moviesData[i].Plot}</p>
+        <p class="movie-plot">${arr[i].Plot}</p>
         </div>
         </div>`
     }
-    console.log("moviesHTML: ", moviesHTML)
-    document.getElementById("search-results").innerHTML=moviesHTML
+    return displayHTML
 }
 
 let addToWatchlistBTN = document.getElementById("search-results")
@@ -84,8 +104,7 @@ function addToMyWatchlist(e){
        console.log("result: ", result)
     //    add to watchlist array
        watchlist.push(result)
-    console.log("Watchlist: ", watchlist)
-        
+    console.log("Watchlist: ", watchlist)  
         
     
 }
