@@ -33,6 +33,8 @@ function clearMoviesList(){
 
 }
 
+// -------------search by title: initial list of movies ----------------
+
 async function getMoviesList(searchTerm){
     clearMoviesList()
     let response = await fetch(`http://www.omdbapi.com/?s=${searchTerm}&apikey=b86c75a0&plot=full`, {method: "GET"})
@@ -51,7 +53,7 @@ async function getMoviesList(searchTerm){
     }
 }
 
-
+// ------------------ get greater movie detail ------------------------
 
 async function getMovieInfo(movie){
     // send movie id in query to receive more detailed movie info back
