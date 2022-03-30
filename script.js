@@ -25,18 +25,33 @@ document.getElementById("movie-title-search").addEventListener("submit", event=>
 
 // -------------------------- look up movie title ------------------------------
 
+// -------------------------clear movieslist -----------------------
+function clearMoviesList(){
+    moviesData = []
+    document.getElementById("search-results").innerHTML=`<p class="message">🕵</p>
+    <p class="message">...Searching</p>`
+
+}
+
 async function getMoviesList(searchTerm){
-    
+    clearMoviesList()
     let response = await fetch(`http://www.omdbapi.com/?s=${searchTerm}&apikey=b86c75a0&plot=full`, {method: "GET"})
     let data = await response.json()
-
-    for(let i=0;i<data.Search.length;i++){
-    // send imdb id for query to get more detailed data
-    getMovieInfo(data.Search[i].imdbID)
-   
-        }
- 
+    console.log("Data: ", data)
+    if(data.Response === 'True'){
+        for(let i=0;i<data.Search.length;i++){
+        // send imdb id for query to get more detailed data
+        getMovieInfo(data.Search[i].imdbID)
+            }
+    }else{
+        console.log(data.Error)
+        document.getElementById("search-results").innerHTML=`
+        <p class="message">⚠️</p>
+        <p class="message error">${data.Error}</p>`
+    }
 }
+
+
 
 async function getMovieInfo(movie){
     // send movie id in query to receive more detailed movie info back

@@ -101,6 +101,12 @@ input {
   /* text-align: center; */
   min-height: 571px;
 }
+.message {
+  font-size: 1rem;
+}
+.error {
+  color: red;
+}
 
 .movie {
   display: flex;
