@@ -143,7 +143,8 @@ input {
   align-items: center;
 }
 
-.addToWatchlist {
+.addToWatchlist,
+.removeFromWatchlist {
   display: inline-block;
 }
 
