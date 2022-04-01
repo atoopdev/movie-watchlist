@@ -14,9 +14,8 @@ function render(){
         // send imdb id for query to get more detailed data
         getMovieInfo(watchList[i])
         }
-    setTimeout(testOutput, 3000)
+    // setTimeout(testOutput, 3000)
     setTimeout(outputMovieHTML, 2000)
-
 }
 
 function testOutput(){

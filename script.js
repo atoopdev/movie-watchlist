@@ -98,26 +98,38 @@ addToWatchlistBTN.addEventListener('click', addToMyWatchlist)
 
 function addToMyWatchlist(e){
     console.log("add to watchlist clicked")
-    
+    let currentWatchlist = []
         let idnum = e.target.parentElement
+
         // get IMDBIDnum from movie where "+watchlist" clicked
         console.log("idnum: ", idnum.children[2].textContent)
+
         imdbID = idnum.children[2].textContent
 
+        if(localStorage.getItem("myWatchlist")){
+            console.log("watchlist not empty")
+        currentWatchlist = JSON.parse(localStorage.getItem("myWatchlist"))
+        // currentWatchlist = currentWatchlist ? currentWatchlist.split(',') : []
+        console.log("Existing current watchlist pulled from LS: ", currentWatchlist)
+        }
 
-        // may not be necessary
+        // see if already in watchlist
         // find movie in array that matches provided id
-    //    let result = moviesData.filter(movie=>movie.imdbID === idnum.children[2].textContent)
-    //    console.log("result: ", result)
+        // https://www.w3schools.com/jsref/jsref_includes_array.asp#:~:text=The%20includes()%20method%20returns,()%20method%20is%20case%20sensitive.
+        if(currentWatchlist.includes(imdbID)){
+            console.log("Movie already in array")
+        }else{
+            console.log("Movie not in array, adding to watchlist")
+            //    add to watchlist array
+            currentWatchlist.push(imdbID)
+            console.log("Currentwatchlist as array: ", currentWatchlist)
+            // console.log("Watchlist: ", currentWatchlist)  
+             // pass myWatchlist array as string to localstorage
+        localStorage.setItem("myWatchlist", JSON.stringify(currentWatchlist))
+        console.log("Output from local storage:", localStorage.getItem("myWatchlist"))
+        }
 
-    //    add to watchlist array
-       myWatchlist.push(imdbID)
-    console.log("Watchlist: ", myWatchlist)  
-
-    // pass myWatchlist array as string to localstorage
-    localStorage.setItem("myWatchlist", JSON.stringify(myWatchlist))
-
-    console.log("Output from local storage:", localStorage.getItem("myWatchlist"))
+   
         
     
 }
