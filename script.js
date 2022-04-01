@@ -2,7 +2,6 @@
 
 // list of searched for movies
 let moviesData = []
-let myWatchlist = []
 
 // ---------------------------- grab form data -------------------------------
 
@@ -108,6 +107,7 @@ function addToMyWatchlist(e){
 
         if(localStorage.getItem("myWatchlist")){
             console.log("watchlist not empty")
+            // originally was missing JSON.parse - had to look up solution here https://www.codegrepper.com/code-examples/javascript/localstorage+save+array
         currentWatchlist = JSON.parse(localStorage.getItem("myWatchlist"))
         // currentWatchlist = currentWatchlist ? currentWatchlist.split(',') : []
         console.log("Existing current watchlist pulled from LS: ", currentWatchlist)

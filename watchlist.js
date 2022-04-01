@@ -10,12 +10,16 @@ render()
 
 function render(){
     // send each id to getMovieInfo
-    for(let i=0;i<watchList.length;i++){
+    if(watchList.length!=0)
+    {for(let i=0;i<watchList.length;i++){
         // send imdb id for query to get more detailed data
         getMovieInfo(watchList[i])
         }
     // setTimeout(testOutput, 3000)
     setTimeout(outputMovieHTML, 2000)
+    }else{
+        console.log("watchlist empty")
+    }
 }
 
 function testOutput(){
@@ -60,3 +64,33 @@ function outputMovieHTML(){
     document.getElementById("my-watchlist").innerHTML = displayHTML
 }
 
+let removeBTN = document.getElementById("my-watchlist")
+removeBTN .addEventListener('click', removeFromWatchList)
+
+function removeFromWatchList(e){
+console.log("remove clicked")
+let currentWatchlist = []
+let idnum = e.target.parentElement
+
+// get IMDBIDnum from movie where "+watchlist" clicked
+console.log("idnum: ", idnum.children[2].textContent)
+
+currentWatchlist = JSON.parse(localStorage.getItem("myWatchlist"))
+console.log("Watchlist grabbed from storage: ", currentWatchlist)
+console.log("currentWatchlist.length: ", currentWatchlist.length)
+
+for(let i=0; i<currentWatchlist.length;i++){
+    if(currentWatchlist[i]=== idnum.children[2].textContent){
+        console.log("value found")
+        currentWatchlist.splice(i,1)
+        console.log("currentwatchlist post splice: ", currentWatchlist)
+    }
+}
+localStorage.clear()
+watchList = currentWatchlist
+outputWatchlist.length = 0
+localStorage.setItem("myWatchlist", JSON.stringify(watchList))
+console.log("Output from local storage:", localStorage.getItem("myWatchlist"))
+render()
+}
+    
