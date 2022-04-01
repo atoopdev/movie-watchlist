@@ -51,7 +51,7 @@ function outputMovieHTML(){
 
         displayHTML += `
         <div class="movie">
-        <img src="${outputWatchlist[i].Poster}" alt = "Poster of ${outputWatchlist[i].Title}"/>
+        <img class="movie-poster" src="${outputWatchlist[i].Poster}" alt = "Poster of ${outputWatchlist[i].Title}"/>
         <div class="movie-summary">
         <p class="movie-title">${outputWatchlist[i].Title} <span class="movie-rating">⭐️ ${outputWatchlist[i].Ratings[0].Value}</span></p>
         <p class="movie-details">${outputWatchlist[i].Runtime} ${outputWatchlist[i].Genre} 
@@ -79,6 +79,7 @@ currentWatchlist = JSON.parse(localStorage.getItem("myWatchlist"))
 console.log("Watchlist grabbed from storage: ", currentWatchlist)
 console.log("currentWatchlist.length: ", currentWatchlist.length)
 
+// found how to splice here https://love2dev.com/blog/javascript-remove-from-array/
 for(let i=0; i<currentWatchlist.length;i++){
     if(currentWatchlist[i]=== idnum.children[2].textContent){
         console.log("value found")

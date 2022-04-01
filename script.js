@@ -79,7 +79,7 @@ function outputMovieHTML(arr){
 
         displayHTML += `
         <div class="movie">
-        <img src="${arr[i].Poster}" alt = "Poster of ${arr[i].Title}"/>
+        <img class="movie-poster" src="${arr[i].Poster}" alt = "Poster of ${arr[i].Title}"/>
         <div class="movie-summary">
         <p class="movie-title">${arr[i].Title} <span class="movie-rating">⭐️ ${arr[i].Ratings[0].Value}</span></p>
         <p class="movie-details">${arr[i].Runtime} ${arr[i].Genre} 
