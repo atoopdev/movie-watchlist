@@ -19,6 +19,7 @@ function render(){
     setTimeout(outputMovieHTML, 2000)
     }else{
         console.log("watchlist empty")
+        document.getElementById("my-watchlist").innerHTML = `<p class="message"><a href="./index.html">+ Let's add some movies!</a></p>`
     }
 }
 

@@ -120,6 +120,9 @@ input {
   /* text-align: center; */
   min-height: 571px;
 }
+.icon {
+  font-size: 2rem;
+}
 .message {
   padding-top: 3rem;
   font-size: 1rem;

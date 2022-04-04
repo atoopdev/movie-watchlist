@@ -27,7 +27,7 @@ document.getElementById("movie-title-search").addEventListener("submit", event=>
 // -------------------------clear movieslist -----------------------
 function clearMoviesList(){
     moviesData = []
-    document.getElementById("search-results").innerHTML=`<p class="message">🕵</p>
+    document.getElementById("search-results").innerHTML=`<p class="message icon">🕵</p>
     <p class="message">...Searching</p>`
 
 }
@@ -47,7 +47,7 @@ async function getMoviesList(searchTerm){
     }else{
         console.log(data.Error)
         document.getElementById("search-results").innerHTML=`
-        <p class="message">⚠️</p>
+        <p class="message icon">⚠️</p>
         <p class="message error">${data.Error}</p>`
     }
 }
