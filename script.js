@@ -99,11 +99,16 @@ function addToMyWatchlist(e){
     console.log("add to watchlist clicked")
     let currentWatchlist = []
         let idnum = e.target.parentElement
+        console.log("whole idnum: ", idnum)
 
         // get IMDBIDnum from movie where "+watchlist" clicked
         console.log("idnum: ", idnum.children[2].textContent)
 
         imdbID = idnum.children[2].textContent
+
+        let clickedBTN = idnum.children[3]
+        console.log("clickedBTN: ", clickedBTN)
+        clickedBTN.textContent = "Added!"
 
         if(localStorage.getItem("myWatchlist")){
             console.log("watchlist not empty")
