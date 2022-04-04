@@ -177,6 +177,17 @@ input {
   display: inline-block;
 }
 
+.material-icons {
+  font-size: 1.25rem;
+}
+
+/* https://codyhouse.co/blog/post/vertical-text-alignment-in-buttons-and-inputs */
 .btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
+  background-color: #fff;
+  font-size: 1rem;
+  border: none;
 }
