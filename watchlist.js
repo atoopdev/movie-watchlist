@@ -55,8 +55,9 @@ function outputMovieHTML(){
         <img class="movie-poster" src="${outputWatchlist[i].Poster}" alt = "Poster of ${outputWatchlist[i].Title}"/>
         <div class="movie-summary">
         <p class="movie-title">${outputWatchlist[i].Title} <span class="movie-rating">⭐️ ${outputWatchlist[i].Ratings[0].Value}</span></p>
-        <p class="movie-details">${outputWatchlist[i].Runtime} ${outputWatchlist[i].Genre} <button class="btn removeFromWatchlist"><i class="material-icons">do_not_disturb_on</i> Remove</button>
-        <p class="movieID">${outputWatchlist[i].imdbID}</p>
+        <p class="movie-details">${outputWatchlist[i].Runtime} ${outputWatchlist[i].Genre} 
+        <span class="movieID">${outputWatchlist[i].imdbID}</span><button class="icon-btn removeFromWatchlist"><i class="material-icons">do_not_disturb_on</i> Remove</button>
+       
         <p class="movie-plot">${outputWatchlist[i].Plot}</p>
         </div>
         </div>`
@@ -73,7 +74,7 @@ let currentWatchlist = []
 let idnum = e.target.parentElement
 
 // get IMDBIDnum from movie where "+watchlist" clicked
-console.log("idnum: ", idnum.children[2].textContent)
+console.log("idnum: ", idnum.children[0].textContent)
 
 currentWatchlist = JSON.parse(localStorage.getItem("myWatchlist"))
 console.log("Watchlist grabbed from storage: ", currentWatchlist)
@@ -81,7 +82,7 @@ console.log("currentWatchlist.length: ", currentWatchlist.length)
 
 // found how to splice here https://love2dev.com/blog/javascript-remove-from-array/
 for(let i=0; i<currentWatchlist.length;i++){
-    if(currentWatchlist[i]=== idnum.children[2].textContent){
+    if(currentWatchlist[i]=== idnum.children[0].textContent){
         console.log("value found")
         currentWatchlist.splice(i,1)
         console.log("currentwatchlist post splice: ", currentWatchlist)

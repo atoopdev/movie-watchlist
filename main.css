@@ -144,6 +144,9 @@ input {
 
 .movie-summary {
   width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .movie-title {
@@ -172,22 +175,27 @@ input {
   padding-top: 0.5em;
 }
 
-.addToWatchlist,
+/* .addToWatchlist,
 .removeFromWatchlist {
   display: inline-block;
-}
+} */
 
 .material-icons {
   font-size: 1.25rem;
 }
 
 /* https://codyhouse.co/blog/post/vertical-text-alignment-in-buttons-and-inputs */
-.btn {
+.icon-btn {
   display: inline-flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   background-color: #fff;
   font-size: 1rem;
+  color: black;
   border: none;
+}
+
+.added {
+  font-color: red;
 }

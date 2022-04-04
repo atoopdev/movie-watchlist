@@ -2,10 +2,11 @@
 
 // list of searched for movies
 let moviesData = []
+const searchForm = document.getElementById("movie-title-search")
 
 // ---------------------------- grab form data -------------------------------
 
-document.getElementById("movie-title-search").addEventListener("submit", event=>{
+searchForm.addEventListener("submit", event=>{
     event.preventDefault()
     // console.log("submit")
     const ourFormData = new FormData(event.target)
@@ -14,6 +15,7 @@ document.getElementById("movie-title-search").addEventListener("submit", event=>
     getMoviesList(movieTitle)
     console.log("Finished moviesData: ", moviesData)
     setTimeout(outputMovies, 3000)
+    searchForm.reset()
 })
 
 // -----------------------------------------------------------------------------
@@ -82,10 +84,10 @@ function outputMovieHTML(arr){
         <img class="movie-poster" src="${arr[i].Poster}" alt = "Poster of ${arr[i].Title}"/>
         <div class="movie-summary">
         <p class="movie-title">${arr[i].Title} <span class="movie-rating">⭐️ ${arr[i].Ratings[0].Value}</span></p>
-        <p class="movie-details">${arr[i].Runtime} ${arr[i].Genre} <button class="btn addtowatchlist"><i class="material-icons">add_circle</i> Watchlist</button> </p>
-        <p class="movieID">${arr[i].imdbID}</p>
-        
+        <p class="movie-details">${arr[i].Runtime} ${arr[i].Genre} <span class="movieID">${arr[i].imdbID}</span>
+        <button class="icon-btn addtowatchlist"><i class="material-icons">add_circle</i> Watchlist</button> </p>
         <p class="movie-plot">${arr[i].Plot}</p>
+        
         </div>
         </div>`
     }
@@ -102,12 +104,14 @@ function addToMyWatchlist(e){
         console.log("whole idnum: ", idnum)
 
         // get IMDBIDnum from movie where "+watchlist" clicked
-        console.log("idnum: ", idnum.children[2].textContent)
+        console.log("idnum: ", idnum.children[0].textContent)
 
-        imdbID = idnum.children[2].textContent
+        imdbID = idnum.children[0].textContent
+        console.log("imbdID: ", imdbID)
 
-        let clickedBTN = idnum.children[3]
+        let clickedBTN = idnum.children[1]
         console.log("clickedBTN: ", clickedBTN)
+        clickedBTN.classList.add("added")
         clickedBTN.textContent = "Added!"
 
         if(localStorage.getItem("myWatchlist")){
@@ -123,6 +127,7 @@ function addToMyWatchlist(e){
         // https://www.w3schools.com/jsref/jsref_includes_array.asp#:~:text=The%20includes()%20method%20returns,()%20method%20is%20case%20sensitive.
         if(currentWatchlist.includes(imdbID)){
             console.log("Movie already in array")
+            clickedBTN.textContent = "Already added!"
         }else{
             console.log("Movie not in array, adding to watchlist")
             //    add to watchlist array
