@@ -77,6 +77,11 @@ function removeFromWatchList(e){
     console.log("idnum: ", movieID)
 
     // make sure is valid click
+    if(movieID.includes("do_not_disturb")){
+        console.log("- icon clicked")
+        movieID = idnum.parentElement.children[0].textContent
+        console.log("new movieid: ", movieID)
+    }
     if(movieID.includes("tt")){
         console.log("contains tt")
         // everything goes in here
