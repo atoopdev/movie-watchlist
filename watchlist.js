@@ -69,30 +69,38 @@ let removeBTN = document.getElementById("my-watchlist")
 removeBTN .addEventListener('click', removeFromWatchList)
 
 function removeFromWatchList(e){
-console.log("remove clicked")
-let currentWatchlist = []
-let idnum = e.target.parentElement
+    console.log("remove clicked")
+    let currentWatchlist = []
+    let idnum = e.target.parentElement
+    let movieID = idnum.children[0].textContent
+    // get IMDBIDnum from movie where "+watchlist" clicked
+    console.log("idnum: ", movieID)
 
-// get IMDBIDnum from movie where "+watchlist" clicked
-console.log("idnum: ", idnum.children[0].textContent)
+    // make sure is valid click
+    if(movieID.includes("tt")){
+        console.log("contains tt")
+        // everything goes in here
+        currentWatchlist = JSON.parse(localStorage.getItem("myWatchlist"))
+    console.log("Watchlist grabbed from storage: ", currentWatchlist)
+    console.log("currentWatchlist.length: ", currentWatchlist.length)
 
-currentWatchlist = JSON.parse(localStorage.getItem("myWatchlist"))
-console.log("Watchlist grabbed from storage: ", currentWatchlist)
-console.log("currentWatchlist.length: ", currentWatchlist.length)
-
-// found how to splice here https://love2dev.com/blog/javascript-remove-from-array/
-for(let i=0; i<currentWatchlist.length;i++){
-    if(currentWatchlist[i]=== idnum.children[0].textContent){
-        console.log("value found")
-        currentWatchlist.splice(i,1)
-        console.log("currentwatchlist post splice: ", currentWatchlist)
+    // found how to splice here https://love2dev.com/blog/javascript-remove-from-array/
+    for(let i=0; i<currentWatchlist.length;i++){
+        if(currentWatchlist[i]=== movieID){
+            console.log("value found")
+            currentWatchlist.splice(i,1)
+            console.log("currentwatchlist post splice: ", currentWatchlist)
+        }
     }
-}
-localStorage.clear()
-watchList = currentWatchlist
-outputWatchlist.length = 0
-localStorage.setItem("myWatchlist", JSON.stringify(watchList))
-console.log("Output from local storage:", localStorage.getItem("myWatchlist"))
-render()
+    localStorage.clear()
+    watchList = currentWatchlist
+    outputWatchlist.length = 0
+    localStorage.setItem("myWatchlist", JSON.stringify(watchList))
+    console.log("Output from local storage:", localStorage.getItem("myWatchlist"))
+    render()
+    }else{
+        console.log("invalid click")
+    }
+    
 }
     

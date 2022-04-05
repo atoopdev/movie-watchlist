@@ -199,3 +199,17 @@ input {
 .added {
   font-color: red;
 }
+
+@media (min-width: 1100px) {
+  img {
+    width: 99px;
+    height: 148.5px;
+    margin: 0 2em;
+  }
+}
+
+@media (min-width: 1400px) {
+  .movie-summary {
+    width: 75%;
+  }
+}

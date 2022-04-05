@@ -94,22 +94,25 @@ function outputMovieHTML(arr){
     return displayHTML
 }
 
-let addToWatchlistBTN = document.getElementById("search-results")
-addToWatchlistBTN.addEventListener('click', addToMyWatchlist)
+document.getElementById("search-results").addEventListener('click', addToMyWatchlist)
 
 function addToMyWatchlist(e){
     console.log("add to watchlist clicked")
     let currentWatchlist = []
         let idnum = e.target.parentElement
+
         console.log("whole idnum: ", idnum)
 
         // get IMDBIDnum from movie where "+watchlist" clicked
         console.log("idnum: ", idnum.children[0].textContent)
 
+        // need to verify is valid
         imdbID = idnum.children[0].textContent
         console.log("imbdID: ", imdbID)
-
-        let clickedBTN = idnum.children[1]
+        if(imdbID.includes("tt")){
+            console.log("tt found")
+            // if works drop everything in here
+            let clickedBTN = idnum.children[1]
         console.log("clickedBTN: ", clickedBTN)
         clickedBTN.classList.add("added")
         clickedBTN.textContent = "Added!"
@@ -138,6 +141,11 @@ function addToMyWatchlist(e){
         localStorage.setItem("myWatchlist", JSON.stringify(currentWatchlist))
         console.log("Output from local storage:", localStorage.getItem("myWatchlist"))
         }
+        }else{
+            console.log("errant click - ignore")
+        }
+
+        
 
    
         
