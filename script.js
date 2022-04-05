@@ -99,6 +99,7 @@ document.getElementById("search-results").addEventListener('click', addToMyWatch
 function addToMyWatchlist(e){
     console.log("add to watchlist clicked")
     let currentWatchlist = []
+    let clickedBTN
         let idnum = e.target.parentElement
 
         console.log("whole idnum: ", idnum)
@@ -109,13 +110,27 @@ function addToMyWatchlist(e){
         // need to verify is valid
         imdbID = idnum.children[0].textContent
         console.log("imbdID: ", imdbID)
-        if(imdbID.includes("tt")){
+
+        // if circle icon clicked - here is movie id and button
+        if(imdbID.includes("add_circle")){
+            console.log("add circle clicked")
+            imdbID = idnum.parentElement.children[0].textContent
+            console.log("New imbdID: ", imdbID)
+            console.log("desired button: ", idnum.parentElement.children[1])
+            clickedBTN = idnum.parentElement.children[1]
+        }
+        // if button is clicked directly
+        else if(imdbID.includes("tt")){
             console.log("tt found")
             // if works drop everything in here
-            let clickedBTN = idnum.children[1]
-        console.log("clickedBTN: ", clickedBTN)
-        clickedBTN.classList.add("added")
+            clickedBTN = idnum.children[1]
+        console.log("clickedBTN: ", clickedBTN.textContent)
+        }else{
+            console.log("bad click - ignore. returning 0")
+            return 0
+        }
         clickedBTN.textContent = "Added!"
+        clickedBTN.style.color = 'red'
 
         if(localStorage.getItem("myWatchlist")){
             console.log("watchlist not empty")
@@ -141,9 +156,7 @@ function addToMyWatchlist(e){
         localStorage.setItem("myWatchlist", JSON.stringify(currentWatchlist))
         console.log("Output from local storage:", localStorage.getItem("myWatchlist"))
         }
-        }else{
-            console.log("errant click - ignore")
-        }
+        
 
         
 

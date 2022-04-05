@@ -100,6 +100,9 @@ form {
   border-radius: 6px;
 }
 
+.btn {
+  padding: 0 20px;
+}
 input {
   padding: 3px;
 }
@@ -196,8 +199,9 @@ input {
   border: none;
 }
 
-.added {
-  font-color: red;
+.icon-btn:hover,
+.icon-btn:focus {
+  color: red;
 }
 
 @media (min-width: 1100px) {
@@ -211,5 +215,6 @@ input {
 @media (min-width: 1400px) {
   .movie-summary {
     width: 75%;
+    padding-right: 2.5em;
   }
 }
