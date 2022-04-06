@@ -2,7 +2,7 @@
 
 // access localStorage to get array of imdb id's 
 let watchList = JSON.parse(localStorage.getItem("myWatchlist"))
-console.log("watchList: ", watchList)
+// console.log("watchList: ", watchList)
 
 let outputWatchlist = []
 
@@ -23,22 +23,23 @@ function render(){
     }
 }
 
-function testOutput(){
-    console.log("outputWatchlist[0]", outputWatchlist[0])
-        console.log("outputWatchlist[1]", outputWatchlist[1])
-        console.log("outputWatchlist[2]", outputWatchlist[2])
-}
+// function testOutput(){
+//     console.log("outputWatchlist[0]", outputWatchlist[0])
+//     console.log("outputWatchlist[1]", outputWatchlist[1])
+//     console.log("outputWatchlist[2]", outputWatchlist[2])
+// }
+
 async function getMovieInfo(movie){
     // send movie id in query to receive more detailed movie info back
     let response = await fetch(`http://www.omdbapi.com/?i=${movie}&apikey=b86c75a0`, {method: "GET"})
     let data = await response.json()
     if(data.Response === 'True'){
-        console.log("Movie data from getMovieInfo: ", data)
+        // console.log("Movie data from getMovieInfo: ", data)
         // becomes movie output list
         outputWatchlist.push(data)
-        console.log(`outputwatchlist after push`, outputWatchlist)
+        // console.log(`outputwatchlist after push`, outputWatchlist)
     }else{
-        console.log(data.Error)
+        // console.log(data.Error)
         document.getElementById("my-watchlist").innerHTML=`
         <p class="message">⚠️</p>
         <p class="message error">${data.Error}</p>`
@@ -65,46 +66,46 @@ function outputMovieHTML(){
     document.getElementById("my-watchlist").innerHTML = displayHTML
 }
 
-let removeBTN = document.getElementById("my-watchlist")
-removeBTN .addEventListener('click', removeFromWatchList)
+    let removeBTN = document.getElementById("my-watchlist")
+    removeBTN .addEventListener('click', removeFromWatchList)
 
 function removeFromWatchList(e){
-    console.log("remove clicked")
+    // console.log("remove clicked")
     let currentWatchlist = []
     let idnum = e.target.parentElement
     let movieID = idnum.children[0].textContent
     // get IMDBIDnum from movie where "+watchlist" clicked
-    console.log("idnum: ", movieID)
+    // console.log("idnum: ", movieID)
 
     // make sure is valid click
     if(movieID.includes("do_not_disturb")){
-        console.log("- icon clicked")
+        // console.log("- icon clicked")
         movieID = idnum.parentElement.children[0].textContent
-        console.log("new movieid: ", movieID)
+        // console.log("new movieid: ", movieID)
     }
     if(movieID.includes("tt")){
-        console.log("contains tt")
+        // console.log("contains tt")
         // everything goes in here
         currentWatchlist = JSON.parse(localStorage.getItem("myWatchlist"))
-    console.log("Watchlist grabbed from storage: ", currentWatchlist)
-    console.log("currentWatchlist.length: ", currentWatchlist.length)
+        // console.log("Watchlist grabbed from storage: ", currentWatchlist)
+        // console.log("currentWatchlist.length: ", currentWatchlist.length)
 
     // found how to splice here https://love2dev.com/blog/javascript-remove-from-array/
     for(let i=0; i<currentWatchlist.length;i++){
         if(currentWatchlist[i]=== movieID){
-            console.log("value found")
+            // console.log("value found")
             currentWatchlist.splice(i,1)
-            console.log("currentwatchlist post splice: ", currentWatchlist)
+            // console.log("currentwatchlist post splice: ", currentWatchlist)
         }
     }
     localStorage.clear()
     watchList = currentWatchlist
     outputWatchlist.length = 0
     localStorage.setItem("myWatchlist", JSON.stringify(watchList))
-    console.log("Output from local storage:", localStorage.getItem("myWatchlist"))
+    // console.log("Output from local storage:", localStorage.getItem("myWatchlist"))
     render()
     }else{
-        console.log("invalid click")
+        // console.log("invalid click")
     }
     
 }

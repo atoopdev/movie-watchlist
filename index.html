@@ -7,8 +7,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="main.css">
@@ -16,30 +16,34 @@
 </head>
 <body>
     <div class="container">
+        <!-- contains top graphic -->
         <div class="header">
+        <!-- contains page title and nav link -->
             <div class="header-nav">
             <h1>Find your film</h1>
             <a href="./watchlist.html" class="mywatchlist-link">My Watchlist</a>
         </div>
+        <!-- search bar -->
             <div class="search-bar">  
                 <form action="#" method="post" id="movie-title-search">
                     <input type="search" name="movieTitle" id="titlesearch" aria-label="blog title" required placeholder="Search for a movie"><br>
                     <button type="submit" class="btn">Search</button>
                 </form>
+                <!-- end search-bar -->
             </div> 
         </div>
         <!-- end header -->
 
-
-<!-- end search bar div -->
-<div class="search-results" id="search-results">
-    <div class="message">
-        <p class="icon">🎞️</p>
-    <p>Start Exploring!</p>
+        <!-- output all search result content below -->
+        <div class="search-results" id="search-results">
+            <!-- used for displaying error messages -->
+            <div class="message">
+                <p class="icon">🎞️</p>
+            <p>Start Exploring!</p>
+            </div>
+        
+        </div>
     </div>
-    
-</div>
-</div>
 <!-- end container -->
 
 
