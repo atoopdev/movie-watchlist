@@ -61,7 +61,7 @@ async function getMovieInfo(movie){
     let response = await fetch(`https://www.omdbapi.com/?i=${movie}&apikey=b86c75a0`, {method: "GET"})
     let data = await response.json()
     
-        // console.log("Movie data from getMovieInfo: ", data)
+        console.log("Movie data from getMovieInfo: ", data)
         // becomes movie output list
         moviesData.push(data)
 }
@@ -75,21 +75,39 @@ function outputMovies(){
     document.getElementById("search-results").innerHTML=moviesHTML
 }
 
+
 function outputMovieHTML(arr){
     let displayHTML = ""
     for(let i=0;i<arr.length;i++){
-
-        displayHTML += `
-        <div class="movie">
-        <img class="movie-poster" src="${arr[i].Poster}" alt = "Poster of ${arr[i].Title}"/>
-        <div class="movie-summary">
-        <p class="movie-title">${arr[i].Title} <span class="movie-rating">⭐️ ${arr[i].Ratings[0].Value}</span></p>
-        <p class="movie-details">${arr[i].Runtime} ${arr[i].Genre} <span class="movieID">${arr[i].imdbID}</span>
-        <button class="icon-btn addtowatchlist"><i class="material-icons">add_circle</i> Watchlist</button> </p>
-        <p class="movie-plot">${arr[i].Plot}</p>
-        
-        </div>
-        </div>`
+        // console.log(`About to output to html: ${arr[i].Poster} ${arr[i].Title} ${arr[i].Ratings[0].Value} ${arr[i].Runtime} ${arr[i].Genre} ${arr[i].imdbID} ${arr[i].Plot}`)
+        if(arr[i].Ratings[0]){
+            console.log("Ratings not null")
+            displayHTML += `
+            <div class="movie">
+            <img class="movie-poster" src="${arr[i].Poster}" alt = "Poster of ${arr[i].Title}"/>
+            <div class="movie-summary">
+            <p class="movie-title">${arr[i].Title} <span class="movie-rating">⭐️ ${arr[i].Ratings[0].Value}</span></p>
+            <p class="movie-details">${arr[i].Runtime} ${arr[i].Genre} <span class="movieID">${arr[i].imdbID}</span>
+            <button class="icon-btn addtowatchlist"><i class="material-icons">add_circle</i> Watchlist</button> </p>
+            <p class="movie-plot">${arr[i].Plot}</p>
+            
+            </div>
+            </div>`
+        }else{
+            console.log("Bad ratings data found - using alternate html")
+            displayHTML += `
+            <div class="movie">
+            <img class="movie-poster" src="${arr[i].Poster}" alt = "Poster of ${arr[i].Title}"/>
+            <div class="movie-summary">
+            <p class="movie-title">${arr[i].Title} <span class="movie-rating">⭐️ - </span></p>
+            <p class="movie-details">${arr[i].Runtime} ${arr[i].Genre} <span class="movieID">${arr[i].imdbID}</span>
+            <button class="icon-btn addtowatchlist"><i class="material-icons">add_circle</i> Watchlist</button> </p>
+            <p class="movie-plot">${arr[i].Plot}</p>
+            
+            </div>
+            </div>`
+        }
+       
     }
     return displayHTML
 }
