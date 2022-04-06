@@ -38,7 +38,7 @@ function clearMoviesList(){
 
 async function getMoviesList(searchTerm){
     clearMoviesList()
-    let response = await fetch(`http://www.omdbapi.com/?s=${searchTerm}&apikey=b86c75a0&plot=full`, {method: "GET"})
+    let response = await fetch(`https://www.omdbapi.com/?s=${searchTerm}&apikey=b86c75a0&plot=full`, {method: "GET"})
     let data = await response.json()
     // console.log("Data: ", data)
     if(data.Response === 'True'){
@@ -58,7 +58,7 @@ async function getMoviesList(searchTerm){
 
 async function getMovieInfo(movie){
     // send movie id in query to receive more detailed movie info back
-    let response = await fetch(`http://www.omdbapi.com/?i=${movie}&apikey=b86c75a0`, {method: "GET"})
+    let response = await fetch(`https://www.omdbapi.com/?i=${movie}&apikey=b86c75a0`, {method: "GET"})
     let data = await response.json()
     
         // console.log("Movie data from getMovieInfo: ", data)
