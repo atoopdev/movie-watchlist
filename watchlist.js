@@ -50,18 +50,34 @@ async function getMovieInfo(movie){
 function outputMovieHTML(){
     let displayHTML = ""
     for(let i=0;i<outputWatchlist.length;i++){
-
-        displayHTML += `
-        <div class="movie">
-        <img class="movie-poster" src="${outputWatchlist[i].Poster}" alt = "Poster of ${outputWatchlist[i].Title}"/>
-        <div class="movie-summary">
-        <p class="movie-title">${outputWatchlist[i].Title} <span class="movie-rating">⭐️ ${outputWatchlist[i].Ratings[0].Value}</span></p>
-        <p class="movie-details">${outputWatchlist[i].Runtime} ${outputWatchlist[i].Genre} 
-        <span class="movieID">${outputWatchlist[i].imdbID}</span><button class="icon-btn removeFromWatchlist"><i class="material-icons">do_not_disturb_on</i> Remove</button>
-       
-        <p class="movie-plot">${outputWatchlist[i].Plot}</p>
-        </div>
-        </div>`
+        if(outputWatchlist[i].Ratings[0]){
+            console.log("Ratings not null")   
+            displayHTML += `
+                <div class="movie">
+                <img class="movie-poster" src="${outputWatchlist[i].Poster}" alt = "Poster of ${outputWatchlist[i].Title}"/>
+                <div class="movie-summary">
+                <p class="movie-title">${outputWatchlist[i].Title} <span class="movie-rating">⭐️ ${outputWatchlist[i].Ratings[0].Value}</span></p>
+                <p class="movie-details">${outputWatchlist[i].Runtime} ${outputWatchlist[i].Genre} 
+                <span class="movieID">${outputWatchlist[i].imdbID}</span><button class="icon-btn removeFromWatchlist"><i class="material-icons">do_not_disturb_on</i> Remove</button>
+            
+                <p class="movie-plot">${outputWatchlist[i].Plot}</p>
+                </div>
+                </div>`
+        }else{
+            console.log("Bad ratings data found - using alternate html")
+            displayHTML += `
+                <div class="movie">
+                <img class="movie-poster" src="${outputWatchlist[i].Poster}" alt = "Poster of ${outputWatchlist[i].Title}"/>
+                <div class="movie-summary">
+                <p class="movie-title">${outputWatchlist[i].Title} <span class="movie-rating">⭐️ - </span></p>
+                <p class="movie-details">${outputWatchlist[i].Runtime} ${outputWatchlist[i].Genre} 
+                <span class="movieID">${outputWatchlist[i].imdbID}</span><button class="icon-btn removeFromWatchlist"><i class="material-icons">do_not_disturb_on</i> Remove</button>
+            
+                <p class="movie-plot">${outputWatchlist[i].Plot}</p>
+                </div>
+                </div>`
+        }
+        
     }
     document.getElementById("my-watchlist").innerHTML = displayHTML
 }
