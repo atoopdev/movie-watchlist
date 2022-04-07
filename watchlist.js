@@ -50,6 +50,12 @@ async function getMovieInfo(movie){
 function outputMovieHTML(){
     let displayHTML = ""
     for(let i=0;i<outputWatchlist.length;i++){
+        if(outputWatchlist[i].Poster!=`N/A`){
+            console.log("image fine")
+        }else{
+            console.log("Missing poster - updating data")
+            outputWatchlist[i].Poster = "./missing-poster.jpg"
+        }
         if(outputWatchlist[i].Ratings[0]){
             console.log("Ratings not null")   
             displayHTML += `
