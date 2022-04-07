@@ -61,7 +61,7 @@ async function getMovieInfo(movie){
     let response = await fetch(`https://www.omdbapi.com/?i=${movie}&apikey=b86c75a0`, {method: "GET"})
     let data = await response.json()
     
-        console.log("Movie data from getMovieInfo: ", data)
+        // console.log("Movie data from getMovieInfo: ", data)
         // becomes movie output list
         moviesData.push(data)
 }
@@ -81,13 +81,13 @@ function outputMovieHTML(arr){
     for(let i=0;i<arr.length;i++){
         // console.log(`About to output to html: ${arr[i].Poster} ${arr[i].Title} ${arr[i].Ratings[0].Value} ${arr[i].Runtime} ${arr[i].Genre} ${arr[i].imdbID} ${arr[i].Plot}`)
         if(arr[i].Poster!=`N/A`){
-            console.log("image fine")
+            // console.log("image fine")
         }else{
-            console.log("Missing poster - updating data")
+            // console.log("Missing poster - updating data")
             arr[i].Poster = "./missing-poster.jpg"
         }
         if(arr[i].Ratings[0]){
-            console.log("Ratings not null")
+            // console.log("Ratings not null")
             displayHTML += `
             <div class="movie">
             <img class="movie-poster" src="${arr[i].Poster}" alt = "Poster of ${arr[i].Title}"/>
@@ -100,7 +100,7 @@ function outputMovieHTML(arr){
             </div>
             </div>`
         }else{
-            console.log("Bad ratings data found - using alternate html")
+            // console.log("Bad ratings data found - using alternate html")
             displayHTML += `
             <div class="movie">
             <img class="movie-poster" src="${arr[i].Poster}" alt = "Poster of ${arr[i].Title}"/>
@@ -129,7 +129,7 @@ function addToMyWatchlist(e){
         // console.log("whole idnum: ", idnum)
 
         // get IMDBIDnum from movie where "+watchlist" clicked
-        console.log("idnum: ", idnum.children[0].textContent)
+        // console.log("idnum: ", idnum.children[0].textContent)
 
         // need to verify is valid
         imdbID = idnum.children[0].textContent
@@ -161,7 +161,7 @@ function addToMyWatchlist(e){
             // originally was missing JSON.parse - had to look up solution here https://www.codegrepper.com/code-examples/javascript/localstorage+save+array
             currentWatchlist = JSON.parse(localStorage.getItem("myWatchlist"))
             // currentWatchlist = currentWatchlist ? currentWatchlist.split(',') : []
-            console.log("Existing current watchlist pulled from LS: ", currentWatchlist)
+            // console.log("Existing current watchlist pulled from LS: ", currentWatchlist)
         }
 
         // see if already in watchlist
@@ -171,7 +171,7 @@ function addToMyWatchlist(e){
             // console.log("Movie already in array")
             clickedBTN.textContent = "Already added!"
         }else{
-            console.log("Movie not in array, adding to watchlist")
+            // console.log("Movie not in array, adding to watchlist")
             //    add to watchlist array
             currentWatchlist.push(imdbID)
             // console.log("Currentwatchlist as array: ", currentWatchlist)

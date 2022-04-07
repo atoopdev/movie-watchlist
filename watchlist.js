@@ -18,7 +18,7 @@ function render(){
     // setTimeout(testOutput, 3000)
     setTimeout(outputMovieHTML, 2000)
     }else{
-        console.log("watchlist empty")
+        // console.log("watchlist empty")
         document.getElementById("my-watchlist").innerHTML = `<p class="message"><a href="./index.html">+ Let's add some movies!</a></p>`
     }
 }
@@ -51,13 +51,13 @@ function outputMovieHTML(){
     let displayHTML = ""
     for(let i=0;i<outputWatchlist.length;i++){
         if(outputWatchlist[i].Poster!=`N/A`){
-            console.log("image fine")
+            // console.log("image fine")
         }else{
-            console.log("Missing poster - updating data")
+            // console.log("Missing poster - updating data")
             outputWatchlist[i].Poster = "./missing-poster.jpg"
         }
         if(outputWatchlist[i].Ratings[0]){
-            console.log("Ratings not null")   
+            // console.log("Ratings not null")   
             displayHTML += `
                 <div class="movie">
                 <img class="movie-poster" src="${outputWatchlist[i].Poster}" alt = "Poster of ${outputWatchlist[i].Title}"/>
@@ -70,7 +70,7 @@ function outputMovieHTML(){
                 </div>
                 </div>`
         }else{
-            console.log("Bad ratings data found - using alternate html")
+            // console.log("Bad ratings data found - using alternate html")
             displayHTML += `
                 <div class="movie">
                 <img class="movie-poster" src="${outputWatchlist[i].Poster}" alt = "Poster of ${outputWatchlist[i].Title}"/>
