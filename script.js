@@ -80,6 +80,12 @@ function outputMovieHTML(arr){
     let displayHTML = ""
     for(let i=0;i<arr.length;i++){
         // console.log(`About to output to html: ${arr[i].Poster} ${arr[i].Title} ${arr[i].Ratings[0].Value} ${arr[i].Runtime} ${arr[i].Genre} ${arr[i].imdbID} ${arr[i].Plot}`)
+        if(arr[i].Poster!=`N/A`){
+            console.log("image fine")
+        }else{
+            console.log("Missing poster - updating data")
+            arr[i].Poster = "./missing-poster.jpg"
+        }
         if(arr[i].Ratings[0]){
             console.log("Ratings not null")
             displayHTML += `
